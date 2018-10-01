@@ -1,0 +1,11 @@
+<h2>aNYCdotes</h2>
+
+<ul>
+  <% @stories.each do |story| %>
+    <li><%= link_to story.title, story %></li>
+    <%= story.location.neighborhood%><br><br>
+  <% end %>
+</ul>
+
+
+<%= link_to "New Story", new_story_path %> | <%= link_to "All Users", users_path %>
