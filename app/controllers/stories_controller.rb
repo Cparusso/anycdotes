@@ -15,6 +15,7 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.create(story_params)
+    story_tag_creator
     redirect_to @story
   end
 
@@ -40,5 +41,15 @@ class StoriesController < ApplicationController
 
   def story_params
     params.require(:story).permit(:title, :content, :user_id, :location_id)
+  end
+
+  def story_tag_ids
+    params["story"]["tag_ids"]
+  end
+
+  def story_tag_creator
+    story_tag_ids.each do |tid|
+      StoryTag.create(tag_id: tid, story_id: @story.id)
+    end
   end
 end
