@@ -3,9 +3,9 @@
 <ul>
   <% @stories.each do |story| %>
     <li><%= link_to story.title, story %></li>
-    <%= story.location.neighborhood%><br><br>
+    <%= link_to story.location.neighborhood, story.location %><br><br>
   <% end %>
 </ul>
 
 
-<%= link_to "New Story", new_story_path %> | <%= link_to "All Users", users_path %>
+<%= link_to "New Story", new_story_path %> | <%= link_to "All Users", users_path %> | <%= link_to "All Locations", locations_path %>

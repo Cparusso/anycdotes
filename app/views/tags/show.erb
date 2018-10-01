@@ -1,0 +1,9 @@
+<h2><%= @tag.tag_name %></h2>
+
+<ul>
+  <% @tag.stories.each do |story| %>
+    <li><%= link_to story.title, story %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Home", stories_path %> | <%= link_to "All Users", users_path %> | <%= link_to "All Locations", locations_path %>

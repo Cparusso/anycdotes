@@ -1,7 +1,13 @@
 <h2><%= @story.title %></h2>
 
-<h3><%= @story.location.neighborhood %></h3>
+<h3><%= link_to @story.location.neighborhood, @story.location %></h3>
 
 <div> <%= @story.content %> </div>
+<br>
+
+<div>Tags:</div>
+<% @story.tags.each do |tag| %>
+  <div> <%= link_to tag.tag_name, tag %> </div>
+<% end %>
 <br>
 <%= link_to "Home", stories_path %>

@@ -1,4 +1,4 @@
 class Tag < ApplicationRecord
-  has_many :storytags
-  has_many :stories, through: :storytags
+  has_many :story_tags
+  has_many :stories, through: :story_tags
 end
