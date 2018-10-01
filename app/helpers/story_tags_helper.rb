@@ -1,0 +1,2 @@
+module StoryTagsHelper
+end
