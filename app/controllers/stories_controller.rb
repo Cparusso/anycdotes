@@ -15,8 +15,13 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.create(story_params)
-    story_tag_creator
-    redirect_to @story
+    if @story.valid?
+      story_tag_creator
+      redirect_to @story
+    else
+      flash[:errors] = @story.errors.full_messages
+      redirect_to new_story_path
+    end
   end
 
   def edit
@@ -25,12 +30,20 @@ class StoriesController < ApplicationController
 
   def update
     @story.update(story_params)
-    redirect_to @story
+    if @story.valid?
+      @story.story_tags.destroy_all
+      story_tag_creator
+      redirect_to @story
+    else
+      flash[:errors] = @story.errors.full_messages
+      redirect_to edit_story_path
+    end
   end
 
   def destroy
+    @user = @story.user
     @story.destroy
-    redirect_to stories_path
+    redirect_to user_path(@user)
   end
 
   private

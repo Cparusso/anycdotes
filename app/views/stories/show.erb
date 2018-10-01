@@ -1,4 +1,9 @@
 <h2><%= @story.title %></h2>
+<% if @story.user %>
+  <div>- <%= link_to @story.user.username, @story.user %></div>
+<% else %>
+  <div>- This user has deleted their profile.</div>
+<% end %>
 
 <h3><%= link_to @story.location.neighborhood, @story.location %></h3>
 

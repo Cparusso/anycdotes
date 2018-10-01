@@ -10,8 +10,10 @@
 <% @user.stories.each do |us| %>
   <li><%= link_to us.title, us %></li>
   <%= link_to us.location.neighborhood, us.location %>
+  <br>
+  <%= link_to 'Delete', us, method: :delete %> | <%= link_to 'Edit', edit_story_path %>
+  <br><br>
 <% end %>
 </ol>
-<br>
 
 <%= link_to "Home", stories_path %>
