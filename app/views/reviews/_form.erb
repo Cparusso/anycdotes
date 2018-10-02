@@ -1,0 +1,21 @@
+<% if flash[:errors] %>
+  <ul>
+  <% flash[:errors].each do |e| %>
+    <li><%= e %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @review do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <br><br>
+  <%= f.label :rating %>
+  <%= f.number_field :content %>
+  <br><br>
+  <%= f.collection_select :story_ids, Story.all, :id, :title%>
+  <br><br>
+  <%= f.submit %>
+  <br>
+  <%= link_to "Cancel", stories_path %>
+<% end %>
