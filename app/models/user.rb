@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_secure_password
+
   has_many :stories
   has_many :locations, through: :stories
 
@@ -8,5 +10,4 @@ class User < ApplicationRecord
 
   validates :password,
             :presence => true
-
 end

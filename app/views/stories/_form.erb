@@ -9,16 +9,11 @@
 <%= form_for @story do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
-  <br><br>
   <%= f.label :content %>
   <%= f.text_area :content %>
-  <br><br>
   <%= f.collection_select :user_id, User.all, :id, :username%>
   <%= f.collection_select :location_id, Location.all, :id, :neighborhood %>
-  <br><br>
   <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name %>
-  <br><br>
   <%= f.submit %>
-  <br>
   <%= link_to "Cancel", stories_path %>
 <% end %>

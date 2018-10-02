@@ -5,8 +5,9 @@
     <li><%= link_to user.username, user %></li>
     <% if !user.stories.empty? %>
       Most Recent Location: <%= link_to user.locations.all.last.neighborhood, location_path(user.locations.all.last.id) %>
+    <% else %>
+      <div>This user has not written any stories yet.</div>
     <% end %>
-    <br><br>
   <% end %>
 </ul>
 

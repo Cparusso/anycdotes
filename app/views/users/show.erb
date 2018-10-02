@@ -3,16 +3,13 @@
 <h2><%= @user.name %> | <%= @user.age %></h2>
 
 <div> <%= @user.bio %> </div>
-<br>
 
 <h2><%= "#{@user.username}'s Stories:" %></h2>
 <ol>
 <% @user.stories.each do |us| %>
   <li><%= link_to us.title, us %></li>
   <%= link_to us.location.neighborhood, us.location %>
-  <br>
   <%= link_to 'Delete', us, method: :delete %> | <%= link_to 'Edit', edit_story_path %>
-  <br><br>
 <% end %>
 </ol>
 
