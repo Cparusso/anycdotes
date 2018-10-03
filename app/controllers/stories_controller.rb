@@ -26,7 +26,9 @@ class StoriesController < ApplicationController
   end
 
   def edit
-
+    if current_user != @story.user
+      redirect_to @story.user
+    end
   end
 
   def update
@@ -42,9 +44,13 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-    @user = @story.user
-    @story.destroy
-    redirect_to user_path(@user)
+    if current_user != @story.user
+      redirect_to @story.user
+    else
+      @user = @story.user
+      @story.destroy
+      redirect_to user_path(@user)
+    end
   end
 
   private
@@ -54,7 +60,7 @@ class StoriesController < ApplicationController
   end
 
   def story_params
-    params.require(:story).permit(:title, :content, :user_id, :location_id)
+    params.require(:story).permit(:title, :content, :id, :user_id, :location_id)
   end
 
   def story_tag_ids

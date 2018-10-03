@@ -15,5 +15,4 @@
   <%= f.collection_select :location_id, Location.all, :id, :neighborhood %>
   <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name %>
   <%= f.submit %>
-  <%= link_to "Cancel", stories_path %>
 <% end %>

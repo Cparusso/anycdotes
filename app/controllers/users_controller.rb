@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorized, only: [:index, :show]
+  skip_before_action :authorized, only: [:index, :show, :new, :create]
 
   def index
     @users = User.all
@@ -25,7 +25,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    if current_user != @user
+      redirect_to @user
+    end
   end
 
   def update
@@ -39,8 +41,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    redirect_to users_path
+    if current_user != @user
+      redirect_to @user
+    else
+      @user.destroy
+      redirect_to users_path
+    end
   end
 
   private

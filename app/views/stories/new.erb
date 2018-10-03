@@ -1,3 +1,4 @@
 <h1>NEW STORY</h1>
 
 <%= render "form" %>
+<%= link_to "Profile Page", user_path(session[:user_id]) %> | <%= link_to "Home", stories_path %>
