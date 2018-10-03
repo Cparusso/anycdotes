@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :find_story, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorized, only: [:index, :show]
 
   def index
     @stories = Story.all

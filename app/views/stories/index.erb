@@ -1,11 +1,22 @@
 <h1>aNYCdotes</h1>
 
+<% if logged_in? %>
+  <%= link_to "Sign Out", sessions_path, method: :delete %>
+<% else %>
+  <%= link_to "Sign In", login_path %>
+<% end %>
+
 <ul>
   <% @stories.each do |story| %>
     <li><%= link_to story.title, story %></li>
-    <%= link_to story.location.neighborhood, story.location %><br><br>
+    <%= link_to story.location.neighborhood, story.location %>
   <% end %>
 </ul>
 
+<% if logged_in? %>
+  <%= link_to "New Story", new_story_path %>
+<% else %>
+  <%= link_to "You Must Sign In To Add a New Story", login_path %> |
+<% end %>
 
-<%= link_to "New Story", new_story_path %> | <%= link_to "All Users", users_path %> | <%= link_to "All Locations", locations_path %>
+<%= link_to "All Users", users_path %> | <%= link_to "All Locations", locations_path %>
