@@ -1,0 +1,7 @@
+flex container: scheme for arranging html objects in a grid like system that uses parent and children containers to arrange items in a hierarchy
+
+position: fixed      keeps the item in the same spot when you scroll
+
+flex wrap:            will wrap the object in whatever kind of border
+
+pseudo-classes are different phases of a class that can be styled separately. for example, when an ilink is clicked it becomes its own pseudo-class of clicked links

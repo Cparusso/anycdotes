@@ -1,11 +1,25 @@
 <h1>aNYCdotes</h1>
 
-<ul>
   <% @stories.each do |story| %>
-    <li><%= link_to story.title, story %></li>
-    <%= link_to story.location.neighborhood, story.location %><br><br>
+  <div class="ui cards">
+    <div class="card">
+      <div class="content">
+        <div class="header"><%= link_to story.title, story %></div>
+        <div class="meta"><%= link_to story.location.neighborhood, story.location %></div>
+        <div class="description">
+          <% if story.content.length > 100 %>
+            <%= "#{story.content[0,100]}..." %>
+          <% else %>
+            <%= "#{story.content}" %>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to "Comments", story %>
+    </div>
+  </div>
   <% end %>
-</ul>
+
+
 
 
 <%= link_to "New Story", new_story_path %> | <%= link_to "All Users", users_path %> | <%= link_to "All Locations", locations_path %>

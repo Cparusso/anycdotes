@@ -1,5 +1,7 @@
 {
   "name": "anycdotes",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "semantic-ui": "^2.4.0"
+  }
 }
