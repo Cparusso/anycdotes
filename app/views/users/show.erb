@@ -8,26 +8,8 @@
 
 <div> <%= @user.bio %> </div>
 
-<<<<<<< HEAD
-=======
 <% if @user.stories.count > 0 %>
-  <h2><%= "#{@user.username}'s Stories:" %></h2>
-  <ol>
-  <% @user.stories.each do |us| %>
-    <li><%= link_to us.title, us %></li>
-    <% if current_user == @user %>
-      <%= link_to us.location.neighborhood, us.location %>
-      <%= link_to 'Delete', us, method: :delete %> | <%= link_to 'Edit', edit_story_path %>
-    <% end %>
-  <% end %>
-  </ol>
-<% else %>
-  <h2><%= link_to 'Write Your First Story', new_story_path %></h2>
-<% end %>
->>>>>>> charlie
-
-<% if @user.stories.count > 0 %>
-  <h2><%= "#{@user.username}'s Stories:" %></h2>
+  <h2><%= "#{@user.username}'s Stories" %></h2>
   <ol>
   <% @user.stories.each do |us| %>
     <li><%= link_to us.title, us %></li>
@@ -39,6 +21,19 @@
   </ol>
 <% else %>
   <h2><%= link_to 'Write Your First Story', new_story_path %></h2>
+<% end %>
+
+<% if @user.comments.count > 0 %>
+  <h2><%= "#{@user.username}'s Comments" %></h2>
+  <ol>
+  <% @user.comments.each do |uc| %>
+    <li><%= link_to uc.story.title, uc.story %></li>
+    <%= uc.content %>
+    <% if current_user == @user %>
+      <%= link_to 'Delete', uc, method: :delete %> | <%= link_to 'Edit', edit_comment_path %>
+    <% end %>
+  <% end %>
+  </ol>
 <% end %>
 <%= link_to "Home", stories_path %>
 

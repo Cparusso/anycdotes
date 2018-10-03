@@ -2,23 +2,14 @@ class CommentsController < ApplicationController
   before_action :find_comment, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorized, only: [:index, :show]
 
-  def index
-    @comments = Comment.all
-  end
-
-  def show
-
-  end
-
   def new
     @comment = Comment.new
   end
 
   def create
-    @comment = Comment.create(comment_params)
+    @comment = Comment.create(user_id: session[:user_id], content: params[:comment][:content], story_id: params[:comment][:story_id])
     if @comment.valid?
-      comment_tag_creator
-      redirect_to @comment
+      redirect_to @comment.story
     else
       flash[:errors] = @comment.errors.full_messages
       redirect_to new_comment_path
@@ -32,9 +23,7 @@ class CommentsController < ApplicationController
   def update
     @comment.update(comment_params)
     if @comment.valid?
-      @comment.comment_tags.destroy_all
-      comment_tag_creator
-      redirect_to @comment
+      redirect_to @comment.story
     else
       flash[:errors] = @comment.errors.full_messages
       redirect_to edit_comment_path
@@ -44,7 +33,7 @@ class CommentsController < ApplicationController
   def destroy
     @user = @comment.user
     @comment.destroy
-    redirect_to user_path(@user)
+    redirect_to story_path(@comment.story)
   end
 
   private

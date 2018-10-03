@@ -13,4 +13,21 @@
 <% @story.tags.each do |tag| %>
   <div> <%= link_to tag.tag_name, tag %> </div>
 <% end %>
+
+
+<h2>Comments</h2>
+<%= link_to "Add Comment", new_comment_path %>
+<% if @story.comments %>
+  <ol>
+    <% @story.comments.reverse.each do |comment| %>
+    <li><%= comment.content %></li>
+    Written By: <%= link_to comment.user.username, user_path(comment.user) %>
+     | <%= comment.created_at.strftime("%B %d, %Y") %>
+       <% if current_user == comment.user %>
+         <%= link_to 'Delete', comment, method: :delete %> | <%= link_to 'Edit', edit_comment_path(comment) %>
+       <% end %>
+    <% end %>
+  </ol>
+<% end %>
+
 <%= link_to "Home", stories_path %>

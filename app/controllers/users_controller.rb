@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
-<<<<<<< HEAD
   skip_before_action :authorized, only: [:index, :show, :new, :create]
-=======
-  skip_before_action :authorized, only: [:new, :create, :index, :show]
->>>>>>> charlie
 
   def index
     @users = User.all
@@ -49,11 +45,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       @user.destroy
-<<<<<<< HEAD
-      redirect_to users_path
-=======
       redirect_to stories_path
->>>>>>> charlie
     end
   end
 
