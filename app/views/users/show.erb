@@ -1,16 +1,30 @@
 <h1><%= @user.username %></h1>
 
+<% if current_user == @user %>
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
+<% end %>
+
 <h2><%= @user.name %> | <%= @user.age %></h2>
 
 <div> <%= @user.bio %> </div>
 
-<h2><%= "#{@user.username}'s Stories:" %></h2>
-<ol>
-<% @user.stories.each do |us| %>
-  <li><%= link_to us.title, us %></li>
-  <%= link_to us.location.neighborhood, us.location %>
-  <%= link_to 'Delete', us, method: :delete %> | <%= link_to 'Edit', edit_story_path %>
+<% if @user.stories.count > 0 %>
+  <h2><%= "#{@user.username}'s Stories:" %></h2>
+  <ol>
+  <% @user.stories.each do |us| %>
+    <li><%= link_to us.title, us %></li>
+    <% if current_user == @user %>
+      <%= link_to us.location.neighborhood, us.location %>
+      <%= link_to 'Delete', us, method: :delete %> | <%= link_to 'Edit', edit_story_path %>
+    <% end %>
+  <% end %>
+  </ol>
+<% else %>
+  <h2><%= link_to 'Write Your First Story', new_story_path %></h2>
 <% end %>
-</ol>
 
 <%= link_to "Home", stories_path %>
+
+<% if current_user == @user %>
+   | <%= link_to 'DELETE PROFILE', user_path, method: :delete %>
+<% end %>

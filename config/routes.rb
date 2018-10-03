@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :users, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   resources :tags, only: [:show]
   # resources :story_tags

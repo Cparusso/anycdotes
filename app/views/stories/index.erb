@@ -1,9 +1,9 @@
 <h1>aNYCdotes</h1>
 
 <% if logged_in? %>
-  <%= link_to "Sign Out", sessions_path, method: :delete %>
+  <%= link_to "Sign Out", sessions_path, method: :delete %> | <%= link_to "Profile", user_path(session[:user_id]) %>
 <% else %>
-  <%= link_to "Sign In", login_path %>
+  <%= link_to "Sign In", login_path %> | <%= link_to "Sign Up", new_user_path %>
 <% end %>
 
 <ul>
@@ -16,7 +16,7 @@
 <% if logged_in? %>
   <%= link_to "New Story", new_story_path %>
 <% else %>
-  <%= link_to "You Must Sign In To Add a New Story", login_path %> |
+  <%= link_to "You Must Sign In To Add a New Story", login_path %>
 <% end %>
 
-<%= link_to "All Users", users_path %> | <%= link_to "All Locations", locations_path %>
+ | <%= link_to "All Users", users_path %> | <%= link_to "All Locations", locations_path %>

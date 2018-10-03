@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
-      redirect_to @user
+      session[:user_id] = @user.id
+      redirect_to stories_path
     else
       flash[:notice] = 'Invalid username or password'
-      session[:user_id] = @user.id
       redirect_to login_path
     end
   end
@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
     flash[:notice] = 'You Have Been Successfully Logged Out'
-    redirect_to login_path
+    redirect_to stories_path
   end
 end
