@@ -16,7 +16,9 @@
 
 
 <h2>Comments</h2>
-<%= link_to "Add Comment", new_comment_path %>
+
+<%= render partial: "comments/form" %>
+
 <% if @story.comments %>
   <ol>
     <% @story.comments.reverse.each do |comment| %>

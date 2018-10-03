@@ -7,7 +7,8 @@ class StoriesController < ApplicationController
   end
 
   def show
-
+    @comment = Comment.new
+    flash[:story_id] = @story.id
   end
 
   def new
@@ -16,7 +17,6 @@ class StoriesController < ApplicationController
 
   def create
     @story = Story.create(user_id: session[:user_id], title: params[:story][:title], content: params[:story][:content], location_id: params[:story][:location_id], tag_ids: story_tag_ids)
-    byebug
     if @story.valid?
       story_tag_creator
       redirect_to @story

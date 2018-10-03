@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.create(user_id: session[:user_id], content: params[:comment][:content], story_id: params[:comment][:story_id])
+    @comment = Comment.create(user_id: session[:user_id], content: params[:comment][:content], story_id: flash[:story_id])
     if @comment.valid?
       redirect_to @comment.story
     else

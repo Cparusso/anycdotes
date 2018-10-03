@@ -7,8 +7,7 @@
 <% end %>
 
 <%= form_for @comment do |f| %>
-  <%= f.label :content %>
   <%= f.text_area :content %>
-  <%= f.collection_select :story_id, Story.all, :id, :title %>
+  <%= f.hidden_field :story_id, value: flash[:story_id] %>
   <%= f.submit %>
 <% end %>
