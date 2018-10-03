@@ -15,7 +15,8 @@ class StoriesController < ApplicationController
   end
 
   def create
-    @story = Story.create(story_params)
+    @story = Story.create(user_id: session[:user_id], title: params[:story][:title], content: params[:story][:content], location_id: params[:story][:location_id], tag_ids: story_tag_ids)
+    byebug
     if @story.valid?
       story_tag_creator
       redirect_to @story
@@ -32,7 +33,7 @@ class StoriesController < ApplicationController
   end
 
   def update
-    @story.update(story_params)
+    @story.update(user_id: session[:user_id], title: params[:story][:title], content: params[:story][:content], location_id: params[:story][:location_id], tag_ids: story_tag_ids)
     if @story.valid?
       @story.story_tags.destroy_all
       story_tag_creator
