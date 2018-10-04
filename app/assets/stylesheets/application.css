@@ -1,5 +1,5 @@
 body {
-  background: #d9d9d9;
+  background: #464040;
 }
 
 h1 {
@@ -12,6 +12,48 @@ h1 {
 
 a {
   color: #483d3d;
+  text-decoration: underline;
+}
+
+.topnav {
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right;
+}
+
+.topnav-right .newstory {
+  margin-top: 3px;
+  padding: 7px 9px;
+  background: #d9d9d9;
+}
+
+.menubar {
+  margin-bottom: 0px !important;
 }
 
 a:hover {
@@ -46,7 +88,7 @@ body, html {
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.pinimg.com/originals/d6/27/c9/d627c9a1bf9177b8dd4406483b3e8e9c.jpg");
 
-    height: 65%;
+    height: 60%;
 
     background-position: center;
     background-repeat: no-repeat;
@@ -60,7 +102,7 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #d9d9d9;
+    color: #ffffff80;
 }
 
 .storycards {
@@ -72,5 +114,46 @@ body, html {
 
 .card {
   background: #bdbfce !important;
-  box-shadow: -5px 10px 20px #aaaaaa !important;
+  length: 170.234px;
+  height: 160px !important;
+  box-shadow: -5px 10px 20px #353638 !important;
+}
+
+.commentcard {
+  background: #dfdfdf !important;
+  height: auto !important;
+}
+
+.deletebutton:hover {
+  background: red !important;
+}
+
+.profilepage {
+  justify-content: left !important;
+}
+
+/* vvvvv Users vvvvv */
+
+.userprofilecontainer {
+  width: 100% !important;
+  height: auto !important;
+  background: #d9d9d9 !important;
+  background: #d9d9d9 !important;
+}
+
+.usernamee {
+  font-size: 100px !important;
+}
+
+.meta {
+  font-size: 20px !important;
+}
+
+.link {
+  font-size: 15px !important;
+}
+
+.description {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
