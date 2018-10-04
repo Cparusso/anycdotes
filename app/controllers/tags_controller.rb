@@ -1,6 +1,10 @@
 class TagsController < ApplicationController
   before_action :find_tag, only: [:show]
-  skip_before_action :authorized, only: :show
+  skip_before_action :authorized, only: [:index, :show]
+
+  def index
+    @tags = Tag.all
+  end
 
   def show
 

@@ -2,7 +2,7 @@
 
 <ul>
   <% @tags.each do |tag| %>
-    <li><%= link_to tag.tag_name, tag %></li>
+    <li><%= link_to tag.tag_name, tag %> | (<%= tag.stories.count %>)</li>
   <% end %>
 </ul>
 
