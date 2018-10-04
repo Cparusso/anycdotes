@@ -1,14 +1,13 @@
-<h1>aNYCdotes</h1>
+<div class="hero-image">
+  <div class="hero-text">
+    <h1 class="anycdotes">aNYCdotes</h1>
+  </div>
+</div>
 
-<% if logged_in? %>
-  <%= link_to "Sign Out", sessions_path, method: :delete %> | <%= link_to "Profile", user_path(session[:user_id]) %>
-<% else %>
-  <%= link_to "Sign In", login_path %> | <%= link_to "Sign Up", new_user_path %>
-<% end %>
 
 <ul>
+  <div class="ui cards storycards">
   <% @stories.each do |story| %>
-  <div class="ui cards">
     <div class="card">
       <div class="content">
         <div class="header"><%= link_to story.title, story %></div>
@@ -23,8 +22,8 @@
       </div>
       <%= link_to "Comments", story %>
     </div>
-  </div>
   <% end %>
+  </div>
 </ul>
 
 <% if logged_in? %>

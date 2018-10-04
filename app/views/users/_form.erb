@@ -1,24 +1,24 @@
 <% if flash[:errors] %>
-  <ul>
+<ul>
   <% flash[:errors].each do |e| %>
-    <li><%= e %></li>
+  <li><%= e %></li>
   <% end %>
-  </ul>
+</ul>
 <% end %>
 
-<%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :age %>
-  <%= f.number_field :age %>
-  <%= f.label :bio %>
-  <%= f.text_area :bio %>
-  <%= f.submit %>
-  <%= link_to "Cancel", stories_path %>
-<% end %>
+<form class="new_user ui form" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="MSZA8XggmCg1eR2qD+Vj8M0MyFWQ0nHtKDPSZfVzB1J5qPjReJfGuGWRkaXTMN4WFOW3W2jfnsqRfkKfN5dDnQ==">
+  <label for="user_username">Username</label>
+  <input type="text" name="user[username]" id="user_username">
+  <label for="user_password">Password</label>
+  <input type="password" name="user[password]" id="user_password">
+  <label for="user_password_confirmation">Password confirmation</label>
+  <input type="password" name="user[password_confirmation]" id="user_password_confirmation">
+  <label for="user_name">Name</label>
+  <input type="text" name="user[name]" id="user_name">
+  <label for="user_age">Age</label>
+  <input type="number" name="user[age]" id="user_age">
+  <label for="user_bio">Bio</label>
+  <textarea name="user[bio]" id="user_bio"></textarea>
+  <input class="ui button" type="submit" name="commit" value="Create User" data-disable-with="Create User">
+  <a class="ui button" href="/stories">Cancel</a>
+</form>

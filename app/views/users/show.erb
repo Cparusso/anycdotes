@@ -1,6 +1,6 @@
 <h1><%= @user.username %></h1>
 
-<% if current_user == @user %>
+<% if @user == @user %>
 <%= link_to 'Edit Profile', edit_user_path(@user) %>
 <% end %>
 
@@ -14,7 +14,7 @@
   <% @user.stories.each do |us| %>
     <li><%= link_to us.title, us %></li>
     <%= link_to us.location.neighborhood, us.location %>
-    <% if current_user == @user %>
+    <% if @user == @user %>
       <%= link_to 'Delete', us, method: :delete %> | <%= link_to 'Edit', edit_story_path %>
     <% end %>
   <% end %>
@@ -29,7 +29,7 @@
   <% @user.comments.each do |uc| %>
     <li><%= link_to uc.story.title, uc.story %></li>
     <%= uc.content %>
-    <% if current_user == @user %>
+    <% if @user == @user %>
       <%= link_to 'Delete', uc, method: :delete %> | <%= link_to 'Edit', edit_comment_path %>
     <% end %>
   <% end %>
@@ -37,6 +37,6 @@
 <% end %>
 <%= link_to "Home", stories_path %>
 
-<% if current_user == @user %>
+<% if @user == @user %>
    | <%= link_to 'DELETE PROFILE', user_path, method: :delete %>
 <% end %>

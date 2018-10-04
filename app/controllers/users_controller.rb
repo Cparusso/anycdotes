@@ -52,7 +52,11 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by(id: params[:id])
+    if logged_in?
+      @user = current_user
+    else
+      @user = User.find_by(id: params[:id])
+    end
   end
 
   def user_params
