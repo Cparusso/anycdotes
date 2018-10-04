@@ -1,0 +1,48 @@
+STORY CARDS FOR OUR USER SHOW PAGE:
+
+<ul>
+  <div class="ui cards storycards">
+  <% @user.stories.each do |story| %>
+    <div class="card">
+      <div class="content">
+        <div class="header"><%= link_to us.title, us %></div>
+        <div class="meta"><%= link_to story.user.username, story.user %>| <%= link_to us.location.neighborhood, us.location %></div>
+        <div class="description">
+          <% if story.content.length > 100 %>
+            <%= "#{story.content[0,100]}..." %>
+          <% else %>
+            <%= "#{story.content}" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</ul>
+
+<div class="ui card">
+  <div class="content">
+    <div class="header">Cute Dog</div>
+    <div class="meta">2 days ago</div>
+    <div class="description">
+      <p>Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their tiny stature, and even others for their massive size.</p>
+      <p>Many people also have their own barometers for what makes a cute dog.</p>
+    </div>
+  </div>
+</div>
+
+OLD
+<% if @user.stories.count > 0 %>
+  <h2><%= "#{@user.username}'s Stories" %></h2>
+  <ol>
+  <% @user.stories.each do |us| %>
+    <li><%= link_to us.title, us %></li>
+    <%= link_to us.location.neighborhood, us.location %>
+    <% if @user == @user %>
+      <%= link_to 'Delete', us, method: :delete %> | <%= link_to 'Edit', edit_story_path %>
+    <% end %>
+  <% end %>
+  </ol>
+<% else %>
+  <h2><%= link_to 'Write Your First Story', new_story_path %></h2>
+<% end %>

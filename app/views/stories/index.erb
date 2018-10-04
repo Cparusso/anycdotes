@@ -4,14 +4,13 @@
   </div>
 </div>
 
-
 <ul>
   <div class="ui cards storycards">
   <% @stories.each do |story| %>
     <div class="card">
       <div class="content">
         <div class="header"><%= link_to story.title, story %></div>
-        <div class="meta"><%= link_to story.location.neighborhood, story.location %></div>
+        <div class="meta"><%= link_to story.user.username, story.user %>| <%= link_to story.location.neighborhood, story.location %></div>
         <div class="description">
           <% if story.content.length > 100 %>
             <%= "#{story.content[0,100]}..." %>
@@ -20,16 +19,7 @@
           <% end %>
         </div>
       </div>
-      <%= link_to "Comments", story %>
     </div>
   <% end %>
   </div>
 </ul>
-
-<% if logged_in? %>
-  <%= link_to "New Story", new_story_path %>
-<% else %>
-  <%= link_to "You Must Sign In To Add a New Story", login_path %>
-<% end %>
-
- | <%= link_to "All Users", users_path %> | <%= link_to "All Locations", locations_path %>

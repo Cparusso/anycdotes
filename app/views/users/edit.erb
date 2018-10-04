@@ -1,3 +1,26 @@
 <h1>EDIT USER</h1>
 
-<%= render "form" %>
+<% if flash[:errors] %>
+<ul>
+  <% flash[:errors].each do |e| %>
+  <li><%= e %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<form class="edit_user ui form" id="edit_user_7" action="/users/7" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="us5ADlsjIB7kwMYOMw2l01qJgnbORv9RmFcaexxHRLH0hEafusOXCw/lVyEKREjQhKeJi6bhPcf2vV6XlzZXhw==">
+  <label for="user_username">Username</label>
+  <input type="text" value="<%= current_user.username %>" name="user[username]" id="user_username">
+  <label for="user_password">Password</label>
+  <input type="password" name="user[password]" id="user_password">
+  <label for="user_password_confirmation">Password confirmation</label>
+  <input type="password" name="user[password_confirmation]" id="user_password_confirmation">
+  <label for="user_name">Name</label>
+  <input type="text" value="<%= current_user.name %>" name="user[name]" id="user_name">
+  <label for="user_age">Age</label>
+  <input type="number" value="<%= current_user.age %>" name="user[age]" id="user_age">
+  <label for="user_bio">Bio</label>
+  <textarea name="user[bio]" id="user_bio"></textarea>
+  <input type="submit" name="commit" value="Update User" data-disable-with="Update User">
+  <a class="ui button" href="/stories">Cancel</a>
+</form>

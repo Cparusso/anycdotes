@@ -1,42 +1,68 @@
-<h1><%= @user.username %></h1>
+<div class="ui center card userprofilecontainer" style="margin: auto;">
+  <div class="content">
+    <div class="header usernamee"><%= @user.username %></div>
+    <div class="meta"><%= @user.name %> | <%= @user.age %></div>
+    <div class="content">
+      <div class="description"> <%= @user.bio %> </div>
+      <% if @user == current_user %>
+        <div class="meta link"><%= link_to 'Edit Profile', edit_user_path(@user) %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<% if @user == @user %>
-<%= link_to 'Edit Profile', edit_user_path(@user) %>
-<% end %>
-
-<h2><%= @user.name %> | <%= @user.age %></h2>
-
-<div> <%= @user.bio %> </div>
 
 <% if @user.stories.count > 0 %>
   <h2><%= "#{@user.username}'s Stories" %></h2>
-  <ol>
-  <% @user.stories.each do |us| %>
-    <li><%= link_to us.title, us %></li>
-    <%= link_to us.location.neighborhood, us.location %>
-    <% if @user == @user %>
-      <%= link_to 'Delete', us, method: :delete %> | <%= link_to 'Edit', edit_story_path %>
-    <% end %>
-  <% end %>
-  </ol>
+  <ul>
+    <div class="ui cards storycards profilepage">
+      <% @user.stories.each do |story| %>
+      <div class="card">
+        <div class="content">
+          <div class="header"><%= link_to story.title, story %></div>
+          <div class="meta link"><%= link_to story.user.username, story.user %>| <%= link_to story.location.neighborhood, story.location %></div>
+          <div class="description">
+            <% if story.content.length > 100 %>
+            <%= "#{story.content[0,100]}..." %>
+            <% else %>
+            <%= "#{story.content}" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </ul>
 <% else %>
   <h2><%= link_to 'Write Your First Story', new_story_path %></h2>
 <% end %>
 
 <% if @user.comments.count > 0 %>
   <h2><%= "#{@user.username}'s Comments" %></h2>
-  <ol>
-  <% @user.comments.each do |uc| %>
-    <li><%= link_to uc.story.title, uc.story %></li>
-    <%= uc.content %>
-    <% if @user == @user %>
-      <%= link_to 'Delete', uc, method: :delete %> | <%= link_to 'Edit', edit_comment_path %>
-    <% end %>
-  <% end %>
-  </ol>
+  <ul>
+    <div class="ui cards storycards profilepage">
+      <% @user.comments.each do |comment| %>
+      <div class="ui card commentcard">
+        <div class="content">
+          <div class="header"><%= link_to comment.story.title, comment.story %></div>
+          <div class="meta"><%= link_to comment.user.username, comment.user %> | <%= comment.created_at.strftime("%B %d, %Y") %> </div>
+          <div class="description">
+            <% if comment.content.length > 100 %>
+            <%= "#{comment.content[0,100]}..." %>
+            <% else %>
+            <%= "#{comment.content}" %>
+            <% end %>
+          </div>
+          <% if @user.username == current_user.username %>
+          <%= link_to 'Delete', comment, method: :delete %> | <%= link_to 'Edit', edit_comment_path %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </ul>
 <% end %>
-<%= link_to "Home", stories_path %>
 
-<% if @user == @user %>
-   | <%= link_to 'DELETE PROFILE', user_path, method: :delete %>
+<% if @user == current_user %>
+  <a class="ui button deletebutton" rel="nofollow" data-method="delete" href="/users/current_user">Delete Profile</a>
 <% end %>

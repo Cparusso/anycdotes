@@ -2,9 +2,6 @@
 
 <ul>
   <% @locations.each do |location| %>
-    <li><%= link_to location.neighborhood, location %></li>
+    <li><%= link_to location.neighborhood, location %> | (<%= location.stories.count %>)</li>
   <% end %>
 </ul>
-
-
-<%= link_to "Home", stories_path %>

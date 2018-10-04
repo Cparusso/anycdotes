@@ -16,9 +16,11 @@
   </head>
 
   <body>
-    <div class="ui inverted segment">
-    <div class="ui inverted secondary pointing menu">
-      <a class="item" href="../stories">
+    <div class="ui inverted segment menubar">
+
+
+    <div class="ui inverted secondary pointing menu topnav">
+      <a class="item active" href="../stories">
         Home
       </a>
       <a class="item" href="<%= logged_in? ? '../users/current_user.id' : '../login' %>">
@@ -33,15 +35,22 @@
       <a class="item" href="../tags">
         Tags
       </a>
-      <% if !logged_in? %>
-        <a class="item" href="../login">
-          Sign In or Sign Up
-        </a>
-        <% else %>
-        <a class="item" rel="nofollow" data-method="delete" href="/sessions">
-          Sign Out
-        </a>
-      <% end %>
+      <div class="topnav-right">
+        <% if logged_in? %>
+          <a class="ui button newstory" href="../stories/new">
+            New Story
+          </a>
+        <% end %>
+        <% if !logged_in? %>
+          <a class="item" href="../login">
+            Sign In or Sign Up
+          </a>
+          <% else %>
+          <a class="item signinorout" rel="nofollow" data-method="delete" href="/sessions">
+            Sign Out
+          </a>
+        <% end %>
+      </div>
     </div>
     </div>
     <%= yield %>
