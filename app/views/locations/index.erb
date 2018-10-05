@@ -1,7 +1,9 @@
 <h1>All Locations</h1>
 
-<ul>
-  <% @locations.each do |location| %>
-    <li><%= link_to location.neighborhood, location %> | (<%= location.stories.count %>)</li>
-  <% end %>
-</ul>
+<div class="ui card commentcard">
+  <ul>
+    <% @locations.each do |location| %>
+      <li><%= link_to location.neighborhood, location %> | (<%= location.stories.count %>)</li>
+    <% end %>
+  </ul>
+</div>

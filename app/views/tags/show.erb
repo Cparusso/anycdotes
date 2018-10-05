@@ -1,7 +1,9 @@
 <h1><%= @tag.tag_name %></h1>
 
-<ul>
-  <% @tag.stories.each do |story| %>
-    <li><%= link_to story.title, story %></li>
-  <% end %>
-</ul>
+<div class="ui card commentcard">
+  <ul>
+    <% @tag.stories.each do |story| %>
+      <li><%= link_to story.title, story %></li>
+    <% end %>
+  </ul>
+</div>

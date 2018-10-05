@@ -1,33 +1,38 @@
-<h1><%= @story.title %></h1>
-<% if @story.user %>
-  <div>- <%= link_to @story.user.username, @story.user %></div>
-<% else %>
-  <div>- This user has deleted their profile.</div>
-<% end %>
+<div class="ui center card userprofilecontainer" style="margin: auto;">
 
-<h2><%= link_to @story.location.neighborhood, @story.location %></h2>
+  <div class="header usernamebanner"><%= @story.title %></div>
+  <% if @story.user %>
+    <div class="meta content"><%= link_to @story.user.username, @story.user %> | <%= link_to @story.location.neighborhood, @story.location %></div>
+  <% else %>
+    <div>This user has deleted their profile.</div>
+  <% end %>
 
-<div> <%= @story.content %> </div>
+  <p class="content"> <%= @story.content %> </p>
 
-<div>Tags:</div>
-<% @story.tags.each do |tag| %>
-  <div> <%= link_to tag.tag_name, tag %> </div>
-<% end %>
+  <div  class="content">
+    <div>Tags:</div>
+      <% @story.tags.each do |tag| %>
+        <div> <%= link_to tag.tag_name, tag %> </div>
+      <% end %>
+  </div>
+</div>
 
+<div class="ui card commentcard commentonstory">
+  <div class="content">
+    <h2>Comments</h2>
+    <%= render partial: "comments/form" %>
+  </div>
 
-<h2>Comments</h2>
-
-<%= render partial: "comments/form" %>
-
-<% if @story.comments %>
-  <ol>
-    <% @story.comments.reverse.each do |comment| %>
-    <li><%= comment.content %></li>
-    Written By: <%= link_to comment.user.username, user_path(comment.user) %>
-     | <%= comment.created_at.strftime("%B %d, %Y") %>
-       <% if current_user == comment.user %>
-         <%= link_to 'Delete', comment, method: :delete %> | <%= link_to 'Edit', edit_comment_path(comment) %>
-       <% end %>
-    <% end %>
-  </ol>
-<% end %>
+  <% if @story.comments %>
+      <% @story.comments.reverse.each_with_index do |comment, idx| %>
+      <div class="ui card content commentcard storycomments commentonstory individualcomment">
+        <div class="ui content"><%= comment.content %>
+          <div class="meta link"><%= link_to comment.user.username, user_path(comment.user) %> | <%= comment.created_at.strftime("%B %d, %Y") %></div>
+             <% if current_user == comment.user %>
+               <div class="meta link topnav-right"><%= link_to 'Delete', comment, method: :delete %> | <%= link_to 'Edit', edit_comment_path(comment) %></div>
+             <% end %>
+         </div>
+       </div>
+      <% end %>
+  <% end %>
+</div>

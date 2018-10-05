@@ -88,7 +88,7 @@ body, html {
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://i.pinimg.com/originals/d6/27/c9/d627c9a1bf9177b8dd4406483b3e8e9c.jpg");
 
-    height: 60%;
+    height: 62%;
 
     background-position: center;
     background-repeat: no-repeat;
@@ -102,18 +102,23 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #ffffff80;
+    color: #ffffffa8;
 }
 
 .storycards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  margin: auto;
   flex-direction: row;
 }
 
+.storycomments {
+  display: flex !important;
+  width: 70% !important;
+}
+
 .card {
-  background: #bdbfce !important;
+  background: #d7d2d2 !important;
   length: 170.234px;
   height: 160px !important;
   box-shadow: -5px 10px 20px #353638 !important;
@@ -122,6 +127,16 @@ body, html {
 .commentcard {
   background: #dfdfdf !important;
   height: auto !important;
+}
+
+.commentonstory {
+  justify-content: center !important;
+  margin: 20px auto !important;
+  width: 90% !important;
+}
+
+.individualcomment {
+  background: #fafafa !important;
 }
 
 .deletebutton:hover {
@@ -141,7 +156,7 @@ body, html {
   background: #d9d9d9 !important;
 }
 
-.usernamee {
+.usernamebanner {
   font-size: 100px !important;
 }
 

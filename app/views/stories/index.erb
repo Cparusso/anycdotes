@@ -10,7 +10,7 @@
     <div class="card">
       <div class="content">
         <div class="header"><%= link_to story.title, story %></div>
-        <div class="meta"><%= link_to story.user.username, story.user %>| <%= link_to story.location.neighborhood, story.location %></div>
+        <div class="meta link"><%= link_to story.user.username, story.user %>| <%= link_to story.location.neighborhood, story.location %></div>
         <div class="description">
           <% if story.content.length > 100 %>
             <%= "#{story.content[0,100]}..." %>

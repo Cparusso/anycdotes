@@ -1,7 +1,9 @@
 <h1><%= @location.neighborhood %></h1>
 
-<ol>
-  <% @location.stories.each do |ls| %>
-    <li><%= link_to ls.title, ls %></li>
-  <% end %>
-</ol>
+<div class="ui card commentcard">
+  <ol>
+    <% @location.stories.each do |ls| %>
+      <li><%= link_to ls.title, ls %></li>
+    <% end %>
+  </ol>
+</div>

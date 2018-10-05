@@ -17,41 +17,39 @@
 
   <body>
     <div class="ui inverted segment menubar">
-
-
-    <div class="ui inverted secondary pointing menu topnav">
-      <a class="item active" href="../stories">
-        Home
-      </a>
-      <a class="item" href="<%= logged_in? ? '../users/current_user.id' : '../login' %>">
-        Profile
-      </a>
-      <a class="item" href="../users">
-        Users
-      </a>
-      <a class="item" href="../locations">
-        Locations
-      </a>
-      <a class="item" href="../tags">
-        Tags
-      </a>
-      <div class="topnav-right">
-        <% if logged_in? %>
-          <a class="ui button newstory" href="../stories/new">
-            New Story
-          </a>
-        <% end %>
-        <% if !logged_in? %>
-          <a class="item" href="../login">
-            Sign In or Sign Up
-          </a>
-          <% else %>
-          <a class="item signinorout" rel="nofollow" data-method="delete" href="/sessions">
-            Sign Out
-          </a>
-        <% end %>
+      <div class="ui inverted secondary pointing menu topnav">
+        <a class="item" href="../stories">
+          Home
+        </a>
+        <a class="item" href='<%= logged_in? ? "/users/#{current_user.id}" : "/login" %>'>
+          Profile
+        </a>
+        <a class="item" href="../users">
+          Users
+        </a>
+        <a class="item" href="../locations">
+          Locations
+        </a>
+        <a class="item" href="../tags">
+          Tags
+        </a>
+        <div class="topnav-right">
+          <% if logged_in? %>
+            <a class="ui button newstory" href="../stories/new">
+              New Story
+            </a>
+          <% end %>
+          <% if !logged_in? %>
+            <a class="item" href="../login">
+              Sign In or Sign Up
+            </a>
+            <% else %>
+            <a class="item signinorout" rel="nofollow" data-method="delete" href="/sessions">
+              Sign Out
+            </a>
+          <% end %>
+        </div>
       </div>
-    </div>
     </div>
     <%= yield %>
   </body>

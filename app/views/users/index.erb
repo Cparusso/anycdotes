@@ -1,15 +1,14 @@
 <h1>All Users</h1>
 
-<ul>
-  <% @users.each do |user| %>
-    <li><%= link_to user.username, user %></li>
-    <% if !user.stories.empty? %>
-      Most Recent Location: <%= link_to user.locations.all.last.neighborhood, location_path(user.locations.all.last.id) %>
-    <% else %>
-      <div>This user has not written any stories yet.</div>
+<div class="ui card commentcard">
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= link_to user.username, user %></li>
+      <% if !user.stories.empty? %>
+        Most Recent Location: <%= link_to user.locations.all.last.neighborhood, location_path(user.locations.all.last.id) %>
+      <% else %>
+        <div>This user has not written any stories yet.</div>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
-
-
-<%= link_to "Home", stories_path %> | <%= link_to "New User", new_user_path %>
+  </ul>
+</div>
