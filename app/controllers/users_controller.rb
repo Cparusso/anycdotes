@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
-      redirect_to @user
+      session[:user_id] = @user.id
+      redirect_to stories_path
     else
       flash[:errors] = @user.errors.full_messages
       redirect_to new_user_path
@@ -41,12 +42,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if current_user != @user
-      redirect_to @user
-    else
-      @user.destroy
-      redirect_to stories_path
-    end
+    current_user.destroy
+    redirect_to stories_path
   end
 
   private

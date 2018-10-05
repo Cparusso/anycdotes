@@ -1,17 +1,27 @@
-<% if flash[:errors] %>
-  <ul>
-  <% flash[:errors].each do |e| %>
-    <li><%= e %></li>
-  <% end %>
-  </ul>
-<% end %>
 
-<%= form_for @story do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <%= f.collection_select :location_id, Location.all, :id, :neighborhood %>
-  <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name %>
-  <%= f.submit %>
-<% end %>
+  <% if flash[:errors] %>
+    <ul>
+    <% flash[:errors].each do |e| %>
+      <li><%= e %></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_for @story, :html => { :class => "ui form" } do |f| %>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </div>
+    <div class="field">
+      <%= f.label :location %>
+      <%= f.collection_select :location_id, Location.all, :id, :neighborhood, {:class => 'ui fluid select'} %>
+    </div>
+    <div class="field">
+      <div id="donkey" class="checkbox_container"><%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name, {:class => "ui checkbox checkbox_container"} %></div>
+    </div>
+    <%= f.submit "Submit", :class => "ui button" %>
+  <% end %>

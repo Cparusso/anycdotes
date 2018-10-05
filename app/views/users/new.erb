@@ -1,3 +1,28 @@
-<h1>NEW USER</h1>
+<div class="ui content card commentcard center userformcontainer">
+  <h1>NEW USER</h1>
 
-<%= render "form" %>
+  <% if flash[:errors] %>
+    <ul>
+      <% flash[:errors].each do |e| %>
+      <li><%= e %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+    <%= form_for @user, :html => { :class => "ui form" } do |f| %>
+     <%= f.label :username %>
+     <%= f.text_field :username %>
+     <%= f.label :password %>
+     <%= f.password_field :password %>
+     <%= f.label :password_confirmation %>
+     <%= f.password_field :password_confirmation %>
+     <%= f.label :name %>
+     <%= f.text_field :name %>
+     <%= f.label :age %>
+     <%= f.number_field :age %>
+     <%= f.label :bio %>
+     <%= f.text_area :bio %>
+     <%= f.submit "Submit", :class => "ui button" %>
+    <% end %>
+  </div>
+</div>

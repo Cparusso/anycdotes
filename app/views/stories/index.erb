@@ -6,7 +6,7 @@
 
 <ul>
   <div class="ui cards storycards">
-  <% @stories.each do |story| %>
+  <% @stories.reverse.each do |story| %>
     <div class="card">
       <div class="content">
         <div class="header"><%= link_to story.title, story %></div>

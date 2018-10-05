@@ -13,7 +13,7 @@
 
 
 <% if @user.stories.count > 0 %>
-  <h2><%= "#{@user.username}'s Stories" %></h2>
+  <h2 class="whitetext"><%= "#{@user.username}'s Stories" %></h2>
   <ul>
     <div class="ui cards storycards profilepage">
       <% @user.stories.each do |story| %>
@@ -38,7 +38,7 @@
 <% end %>
 
 <% if @user.comments.count > 0 %>
-  <h2><%= "#{@user.username}'s Comments" %></h2>
+  <h2 class="whitetext" ><%= "#{@user.username}'s Comments" %></h2>
   <ul>
     <div class="ui cards storycards profilepage">
       <% @user.comments.each do |comment| %>
@@ -64,5 +64,5 @@
 <% end %>
 
 <% if @user == current_user %>
-  <a class="ui button deletebutton" rel="nofollow" data-method="delete" href="/users/current_user">Delete Profile</a>
+  <a class="ui button deletebutton topnav-right" rel="nofollow" data-method="delete" href="/users/current_user">Delete Profile</a>
 <% end %>

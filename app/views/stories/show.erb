@@ -11,9 +11,15 @@
 
   <div  class="content">
     <div>Tags:</div>
-      <% @story.tags.each do |tag| %>
+      <% @story.tags.uniq.each do |tag| %>
         <div> <%= link_to tag.tag_name, tag %> </div>
       <% end %>
+  </div>
+
+  <div class="content meta link">
+    <%= link_to "Edit Story", edit_story_path %>
+    <div class="ui button deletebutton topnav-right"><%= link_to 'Delete', @story, method: :delete %></div>
+
   </div>
 </div>
 

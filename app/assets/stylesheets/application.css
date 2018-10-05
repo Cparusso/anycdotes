@@ -6,6 +6,35 @@ h1 {
   font-family: 'Lora', serif;
 }
 
+.whitetext {
+  color: #e3e3e3;
+}
+
+#donkey {
+  margin: 5%;
+}
+
+#donkey > label {
+  font-size: 14px;
+  margin-right: 3%;
+}
+
+#donkey > label:hover {
+  color: #861b1b;
+}
+
+.checkbox_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 5%;
+}
+
+.userformcontainer {
+  margin: 10px auto !important;
+  width: 60% !important;
+}
+
 * {
   font-family: 'Lora', serif;
 }
@@ -140,7 +169,8 @@ body, html {
 }
 
 .deletebutton:hover {
-  background: red !important;
+  background: #6d2929e6 !important;
+  color: #d9d9d9 !important;
 }
 
 .profilepage {
